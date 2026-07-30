@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Turn product, BOM, supplier, and evidence files into an auditable Digital Product Passport readiness bundle.">
+  <meta name="theme-color" content="#0c7668">
+  <meta property="og:title" content="DPP Preflight">
+  <meta property="og:description" content="Find the missing source evidence before downstream DPP validation.">
+  <meta property="og:image" content="https://kanadek.github.io/dpp-preflight/assets/hero-product-evidence.png">
+  <title>DPP Preflight | Source evidence before DPP validation</title>
+  <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="DPP Preflight home">
+      <img src="assets/mark.svg" alt="" width="28" height="28">
+      <span>DPP Preflight</span>
+    </a>
+    <nav aria-label="Primary">
+      <a href="#outputs">Outputs</a>
+      <a href="#workflow">Workflow</a>
+      <a href="demo/report.html">Live report</a>
+      <a href="https://github.com/KanadeK/dpp-preflight">GitHub</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Local-first evidence readiness</p>
+        <h1>Find the missing source before the passport fails.</h1>
+        <p class="lede">DPP Preflight joins product data, BOMs, suppliers, and evidence files into one auditable handoff for the next Digital Product Passport validation layer.</p>
+        <div class="actions">
+          <a class="button primary" href="demo/report.html">Inspect the gap report</a>
+          <a class="button secondary" href="https://github.com/KanadeK/dpp-preflight#quick-start">Run it locally</a>
+        </div>
+        <p class="trust">No upload. No account. No compliance theater.</p>
+      </div>
+      <figure class="hero-visual">
+        <img src="assets/hero-product-evidence.png" alt="A fictional desk lamp separated into an aluminium base, steel arm, LED board, wiring, fasteners, and three paper evidence records.">
+        <figcaption>One fictional product. Four source files. Every evidence owner visible.</figcaption>
+      </figure>
+    </section>
+
+    <section class="proof" aria-labelledby="proof-title">
+      <div>
+        <p class="eyebrow">Intentional-gap fixture</p>
+        <h2 id="proof-title">The demo fails usefully.</h2>
+      </div>
+      <dl>
+        <div><dt>55.5</dt><dd>readiness score</dd></div>
+        <div><dt>9</dt><dd>blocking checks</dd></div>
+        <div><dt>11</dt><dd>owner requests</dd></div>
+        <div><dt>8</dt><dd>verified bundle files</dd></div>
+      </dl>
+    </section>
+
+    <section class="section" id="outputs">
+      <div class="section-heading">
+        <p class="eyebrow">Portable output</p>
+        <h2>A review artifact, not another data-entry screen.</h2>
+        <p>Open the report in a browser, triage a CSV in procurement, hand JSON-LD to engineering, and verify the same ZIP offline.</p>
+      </div>
+      <div class="output-list">
+        <article>
+          <span>01</span>
+          <h3>Gaps with owners</h3>
+          <p>Missing BOM fields, evidence files, dates, hashes, facilities, and access roles become concrete source requests.</p>
+          <a href="demo/gaps.csv">Download gaps.csv</a>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Evidence receipts</h3>
+          <p>Local evidence bytes receive SHA-256 receipts and a manifest. Path traversal and silent overwrites are rejected.</p>
+          <a href="demo/source-receipt.json">Open source receipt</a>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Readiness draft</h3>
+          <p>A JSON-LD draft and GS1 Digital Link QR prepare the handoff without pretending to be a Registry submission.</p>
+          <a href="demo/passport-draft.jsonld">Open JSON-LD draft</a>
+        </article>
+        <article>
+          <span>04</span>
+          <h3>Deterministic bundle</h3>
+          <p>Identical sources, rule pack, tool version, and timestamp produce byte-identical archives for independent review.</p>
+          <a href="demo/dpp-preflight-bundle.zip">Download demo ZIP</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="workflow section" id="workflow">
+      <div class="section-heading">
+        <p class="eyebrow">Upstream by design</p>
+        <h2>Use it before formal schema validation.</h2>
+      </div>
+      <ol>
+        <li><strong>Load</strong><span>Product JSON, BOM CSV, supplier CSV, evidence ledger and local files.</span></li>
+        <li><strong>Reconcile</strong><span>23 dated checks connect every gap to a field and source owner.</span></li>
+        <li><strong>Handoff</strong><span>Report, requests, JSON-LD, QR, receipts, and manifest travel together.</span></li>
+        <li><strong>Validate</strong><span>Apply the authoritative product-specific model and Registry process next.</span></li>
+      </ol>
+    </section>
+
+    <section class="terminal-section section">
+      <div>
+        <p class="eyebrow">Two commands to evidence</p>
+        <h2>Clone, analyze, verify.</h2>
+        <p>Node.js 20 or newer. The analysis path does not access the network.</p>
+      </div>
+      <pre aria-label="Quick start commands"><code><span>$</span> npm ci
+<span>$</span> node src/cli.js analyze \
+    --input-dir examples/northstar-gaps \
+    --out dist/preflight \
+    --allow-gaps
+<span>$</span> node src/cli.js verify \
+    dist/preflight/dpp-preflight-bundle.zip</code></pre>
+    </section>
+
+    <section class="boundary section">
+      <p class="eyebrow">Clear boundary</p>
+      <h2>A 100 score is readiness, not a legal claim.</h2>
+      <p>The dated horizontal rule pack helps teams repair operational source data. Product-specific delegated acts, formal schemas, signatures, trusted time, conformity assessment, and Registry submission remain authoritative downstream work.</p>
+      <div class="boundary-links">
+        <a href="https://github.com/KanadeK/dpp-preflight/blob/main/docs/RESEARCH.md">Read the selection research</a>
+        <a href="https://github.com/KanadeK/dpp-preflight/blob/main/docs/ARCHITECTURE.md">Inspect trust boundaries</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <strong>DPP Preflight</strong>
+      <p>Practical source evidence before passport validation.</p>
+    </div>
+    <div>
+      <a href="https://github.com/KanadeK/dpp-preflight">Source</a>
+      <a href="https://github.com/KanadeK/dpp-preflight/releases">Releases</a>
+      <a href="https://github.com/KanadeK/dpp-preflight/security">Security</a>
+      <a href="https://eur-lex.europa.eu/eli/reg/2024/1781/eng">ESPR</a>
+    </div>
+  </footer>
+</body>
+</html>

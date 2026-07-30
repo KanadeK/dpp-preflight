@@ -1,0 +1,4 @@
+evidence_id,type,path,issuer,issued_on,valid_until,supplier_id,scope,declared_sha256
+EVD-ALU,recycled-content-declaration,evidence/aluminium-recycled-content.txt,Alba Circular Metals,2026-01-15,2027-01-15,SUP-ALU,CMP-001,
+EVD-ROHS,material-compliance-declaration,evidence/electronics-material-declaration.txt,Nederland Light Engine,2026-02-10,2027-02-10,SUP-ELEC,CMP-003|CMP-004,
+EVD-STEEL,recycled-content-declaration,evidence/steel-recycled-content.txt,Morava Forming Cooperative,2026-03-05,2027-03-05,SUP-METAL,CMP-002,

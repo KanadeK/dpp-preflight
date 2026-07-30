@@ -1,0 +1,2 @@
+evidence_id,type,path,issuer,issued_on,valid_until,supplier_id,scope,declared_sha256
+EVD-001,material-declaration,evidence/replace-me.txt,Your supplier,2026-01-01,2027-01-01,SUP-001,CMP-001,

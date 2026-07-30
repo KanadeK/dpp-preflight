@@ -1,0 +1,44 @@
+name: DPP Preflight
+description: Build an auditable DPP readiness bundle from product, BOM, supplier, and evidence files
+author: KanadeK
+branding:
+  icon: package
+  color: green
+inputs:
+  input-dir:
+    description: Directory containing product.json, bom.csv, suppliers.csv, evidence.csv, and evidence files
+    required: true
+  output-dir:
+    description: Output directory for the readiness bundle
+    required: false
+    default: dpp-preflight-output
+  rules:
+    description: Optional rule-pack JSON path
+    required: false
+    default: ""
+  as-of:
+    description: Optional reproducible ISO 8601 analysis timestamp
+    required: false
+    default: ""
+  allow-gaps:
+    description: Return success even when blocking gaps remain
+    required: false
+    default: "false"
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: "20"
+    - name: Install action dependency
+      shell: bash
+      run: npm ci --omit=dev --ignore-scripts --prefix "$GITHUB_ACTION_PATH"
+    - name: Run DPP Preflight
+      shell: bash
+      env:
+        INPUT_INPUT_DIR: ${{ inputs.input-dir }}
+        INPUT_OUTPUT_DIR: ${{ inputs.output-dir }}
+        INPUT_RULES: ${{ inputs.rules }}
+        INPUT_AS_OF: ${{ inputs.as-of }}
+        INPUT_ALLOW_GAPS: ${{ inputs.allow-gaps }}
+      run: node "$GITHUB_ACTION_PATH/scripts/action-run.mjs"

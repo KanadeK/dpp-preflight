@@ -1,0 +1,6 @@
+Fictional demonstration evidence
+Supplier: Alba Circular Metals
+Component: CMP-001
+Declared post-consumer recycled content: 72 percent
+Batch family: AL-2026-NORTHSTAR
+Issued: 2026-01-15

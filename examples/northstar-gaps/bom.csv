@@ -1,0 +1,4 @@
+component_id,name,quantity,unit,mass_g,material_code,material_name,recycled_content_pct,supplier_id,country_of_origin,evidence_ids
+CMP-001,Weighted base,1,each,640,AL-6061,Aluminium 6061,72,SUP-ALU,DE,EVD-ALU-OLD
+CMP-002,Adjustable arm,1,each,410,,Cold rolled steel,35,SUP-UNKNOWN,CZ,EVD-MISSING
+CMP-003,LED light engine,1,each,180,EEA-LED,LED electronic assembly,,SUP-ELEC,,

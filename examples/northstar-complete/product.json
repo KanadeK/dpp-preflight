@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "dpp-preflight-product/1",
+  "snapshotAt": "2026-07-30T00:00:00.000Z",
+  "product": {
+    "name": "Northstar Task Lamp",
+    "categoryCode": "FURN-LIGHT-TASK",
+    "identifier": {
+      "scheme": "gtin",
+      "value": "09506000134352",
+      "granularity": "model"
+    },
+    "manufacturer": {
+      "name": "Lumen Orchard Works",
+      "operatorId": "LEI-549300NORTHSTAR01",
+      "contact": "product-data@example.com"
+    },
+    "facility": {
+      "name": "Lumen Orchard Brno Assembly",
+      "facilityId": "FAC-CZ-BRNO-0042"
+    },
+    "countryOfProduction": "CZ",
+    "netMassG": 1360,
+    "dataFormat": "json-ld",
+    "passportUrl": "https://id.gs1.org/01/09506000134352",
+    "dataCarrier": {
+      "type": "qr",
+      "uri": "https://id.gs1.org/01/09506000134352"
+    },
+    "access": {
+      "roles": ["consumer", "authority", "repairer"],
+      "public": ["identity", "materials", "repair"],
+      "restricted": ["supplier-commercial"]
+    },
+    "privacy": {
+      "containsCustomerPersonalData": false
+    },
+    "repair": {
+      "instructionsUrl": "https://example.com/northstar/repair",
+      "sparePartsUrl": "https://example.com/northstar/spares"
+    }
+  }
+}

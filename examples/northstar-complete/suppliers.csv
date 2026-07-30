@@ -1,0 +1,4 @@
+supplier_id,name,contact,operator_id,facility_id,country
+SUP-ALU,Alba Circular Metals,evidence@alba.example,LEI-ALBA-0001,FAC-DE-ALBA-07,DE
+SUP-ELEC,Nederland Light Engine,data@nl-light.example,LEI-NLE-0021,FAC-NL-NLE-03,NL
+SUP-METAL,Morava Forming Cooperative,quality@morava.example,LEI-MORAVA-014,FAC-CZ-MORAVA-02,CZ

@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "dpp-preflight-product/1",
+  "snapshotAt": "2026-07-30T00:00:00.000Z",
+  "product": {
+    "name": "Example repairable appliance",
+    "categoryCode": "YOUR-CATEGORY",
+    "identifier": {
+      "scheme": "custom",
+      "value": "YOUR-IDENTIFIER",
+      "granularity": "model"
+    },
+    "manufacturer": {
+      "name": "Your organization",
+      "operatorId": "YOUR-OPERATOR-ID",
+      "contact": "product-data@example.com"
+    },
+    "facility": {
+      "name": "Your assembly facility",
+      "facilityId": "YOUR-FACILITY-ID"
+    },
+    "countryOfProduction": "XX",
+    "netMassG": 100,
+    "dataFormat": "json-ld",
+    "passportUrl": "https://example.com/products/YOUR-IDENTIFIER",
+    "dataCarrier": {
+      "type": "qr",
+      "uri": "https://example.com/products/YOUR-IDENTIFIER"
+    },
+    "access": {
+      "roles": ["consumer", "authority", "repairer"],
+      "public": ["identity", "materials", "repair"],
+      "restricted": []
+    },
+    "privacy": {
+      "containsCustomerPersonalData": false
+    },
+    "repair": {
+      "instructionsUrl": "https://example.com/repair/YOUR-IDENTIFIER",
+      "sparePartsUrl": "https://example.com/spares/YOUR-IDENTIFIER"
+    }
+  }
+}

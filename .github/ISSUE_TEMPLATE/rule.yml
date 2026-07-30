@@ -1,0 +1,31 @@
+name: Rule proposal
+description: Propose a versioned readiness rule with authoritative basis
+title: "[Rule] "
+labels: ["rule-pack"]
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: Operational gap
+      description: What source-data failure should this catch?
+    validations:
+      required: true
+  - type: input
+    id: authority
+    attributes:
+      label: Primary source
+      description: Link to the authoritative regulation, delegated act, or standard.
+    validations:
+      required: true
+  - type: textarea
+    id: fixture
+    attributes:
+      label: Passing and failing examples
+    validations:
+      required: true
+  - type: textarea
+    id: remediation
+    attributes:
+      label: Source-level remediation
+    validations:
+      required: true

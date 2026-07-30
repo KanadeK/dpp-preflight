@@ -1,0 +1,63 @@
+{
+  "name": "dpp-preflight",
+  "version": "0.1.0",
+  "description": "Turn product, BOM, supplier, and evidence files into an auditable Digital Product Passport readiness bundle.",
+  "type": "module",
+  "bin": {
+    "dpp-preflight": "src/cli.js"
+  },
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "src",
+    "rules",
+    "templates",
+    "scripts/action-run.mjs",
+    "action.yml",
+    "README.md",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "scripts": {
+    "lint": "node scripts/quality-gate.mjs",
+    "test": "node --test",
+    "test:coverage": "node --test --experimental-test-coverage --test-coverage-lines=85 --test-coverage-functions=85 --test-coverage-branches=75 --test-coverage-exclude=src/cli.js",
+    "demo": "node src/cli.js analyze --input-dir examples/northstar-gaps --out dist/demo --as-of 2026-07-30T00:00:00.000Z --allow-gaps --force",
+    "demo:complete": "node src/cli.js analyze --input-dir examples/northstar-complete --out dist/complete --as-of 2026-07-30T00:00:00.000Z --force",
+    "verify:demo": "node src/cli.js verify dist/demo/dpp-preflight-bundle.zip",
+    "benchmark": "node scripts/benchmark.mjs",
+    "site": "node scripts/build-site.mjs",
+    "preview": "node scripts/serve-site.mjs",
+    "package:release": "node scripts/package-release.mjs",
+    "verify:release": "node scripts/verify-release.mjs",
+    "release:check": "node scripts/release-check.mjs"
+  },
+  "keywords": [
+    "digital-product-passport",
+    "dpp",
+    "espr",
+    "circular-economy",
+    "supply-chain",
+    "evidence",
+    "gs1-digital-link",
+    "bom",
+    "readiness"
+  ],
+  "author": "KanadeK <121669563+KanadeK@users.noreply.github.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KanadeK/dpp-preflight.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KanadeK/dpp-preflight/issues"
+  },
+  "homepage": "https://kanadek.github.io/dpp-preflight/",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "qrcode-generator": "2.0.4"
+  }
+}

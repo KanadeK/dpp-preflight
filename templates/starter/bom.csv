@@ -1,0 +1,2 @@
+component_id,name,quantity,unit,mass_g,material_code,material_name,recycled_content_pct,supplier_id,country_of_origin,evidence_ids
+CMP-001,Main assembly,1,each,100,MAT-001,Declared material,,SUP-001,XX,EVD-001

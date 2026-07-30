@@ -1,0 +1,5 @@
+Fictional demonstration evidence
+Supplier: Nederland Light Engine
+Components: CMP-003 and CMP-004
+Statement: Material declaration supplied for readiness workflow demonstration.
+Issued: 2026-02-10

@@ -1,0 +1,5 @@
+Fictional demonstration evidence
+Supplier: Morava Forming Cooperative
+Component: CMP-002
+Declared recycled content: 35 percent
+Issued: 2026-03-05

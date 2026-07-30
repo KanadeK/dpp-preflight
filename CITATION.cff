@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If DPP Preflight supports your work, cite the software release."
+title: "DPP Preflight"
+type: software
+authors:
+  - family-names: "KanadeK"
+repository-code: "https://github.com/KanadeK/dpp-preflight"
+url: "https://kanadek.github.io/dpp-preflight/"
+license: MIT
+version: 0.1.0
+date-released: 2026-07-30
+keywords:
+  - digital product passport
+  - ESPR
+  - supply chain
+  - evidence lineage

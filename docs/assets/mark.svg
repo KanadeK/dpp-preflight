@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="DPP Preflight mark">
+  <rect width="64" height="64" fill="#13201d"/>
+  <path d="M15 16h21c9.4 0 17 7.6 17 17s-7.6 17-17 17H15V16Zm11 10v14h10a7 7 0 1 0 0-14H26Z" fill="#e9f2ef"/>
+  <path d="M11 11h8v42h-8z" fill="#27a28d"/>
+</svg>

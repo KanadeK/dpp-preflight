@@ -1,0 +1,291 @@
+{
+  "metadata": {
+    "id": "eu-espr-core-readiness-2026-07",
+    "version": "0.1.0",
+    "snapshotDate": "2026-07-30",
+    "title": "ESPR core Digital Product Passport readiness snapshot",
+    "disclaimer": "This rule pack checks source-data readiness against selected horizontal ESPR concepts. It is not legal advice, conformity assessment, product-specific delegated-act validation, or a submission to the EU DPP Registry.",
+    "sources": [
+      {
+        "title": "Regulation (EU) 2024/1781, Article 10",
+        "url": "https://eur-lex.europa.eu/eli/reg/2024/1781/eng",
+        "retrieved": "2026-07-30"
+      },
+      {
+        "title": "European Commission Digital Product Passport",
+        "url": "https://single-market-economy.ec.europa.eu/single-market/digital-product-passport_en",
+        "retrieved": "2026-07-30"
+      },
+      {
+        "title": "European Commission DPP Registry",
+        "url": "https://single-market-economy.ec.europa.eu/single-market/digital-product-passport/dpp-registry_en",
+        "retrieved": "2026-07-30"
+      },
+      {
+        "title": "GS1 Digital Link standard",
+        "url": "https://www.gs1.org/standards/gs1-digital-link",
+        "retrieved": "2026-07-30"
+      }
+    ]
+  },
+  "checks": [
+    {
+      "id": "PROD-001",
+      "kind": "required",
+      "path": "product.name",
+      "title": "Product name",
+      "description": "A stable human-readable product name anchors the source record.",
+      "severity": "major",
+      "weight": 5,
+      "owner": "internal-product-team",
+      "remediation": "Set product.name in product.json.",
+      "basis": ["ESPR Article 10(1)(a) and Annex III identification concepts"]
+    },
+    {
+      "id": "ID-001",
+      "kind": "enum",
+      "path": "product.identifier.scheme",
+      "allowed": ["gtin", "custom"],
+      "title": "Identifier scheme",
+      "description": "The product identifier scheme must be explicit.",
+      "severity": "critical",
+      "weight": 8,
+      "owner": "internal-product-team",
+      "remediation": "Choose gtin or custom and document how uniqueness is governed.",
+      "basis": ["ESPR Article 10(1)(b)"]
+    },
+    {
+      "id": "ID-002",
+      "kind": "required",
+      "path": "product.identifier.value",
+      "title": "Unique product identifier",
+      "description": "The passport must resolve from a unique persistent product identifier.",
+      "severity": "critical",
+      "weight": 9,
+      "owner": "internal-product-team",
+      "remediation": "Add the governed identifier value used by the data carrier.",
+      "basis": ["ESPR Article 10(1)(b)"]
+    },
+    {
+      "id": "ID-003",
+      "kind": "gtin",
+      "title": "GTIN check digit",
+      "description": "When GTIN is selected, its length and check digit must be valid.",
+      "severity": "major",
+      "weight": 5,
+      "remediation": "Correct the GTIN or select custom only when another governed identifier is actually used.",
+      "basis": ["GS1 General Specifications"]
+    },
+    {
+      "id": "ID-004",
+      "kind": "enum",
+      "path": "product.identifier.granularity",
+      "allowed": ["model", "batch", "item"],
+      "title": "Identifier granularity",
+      "description": "Model, batch, or item scope changes what the source data can truthfully represent.",
+      "severity": "major",
+      "weight": 5,
+      "owner": "internal-product-team",
+      "remediation": "Declare whether this record describes a model, batch, or individual item.",
+      "basis": ["ESPR Article 10(1)(b)"]
+    },
+    {
+      "id": "PROD-002",
+      "kind": "required",
+      "path": "product.categoryCode",
+      "title": "Product category code",
+      "description": "A category reference is needed to route later product-specific rules.",
+      "severity": "major",
+      "weight": 5,
+      "owner": "internal-product-team",
+      "remediation": "Add the internal or standardized category code and document its vocabulary.",
+      "basis": ["ESPR product-group delegated acts"]
+    },
+    {
+      "id": "OP-001",
+      "kind": "required",
+      "path": "product.manufacturer.operatorId",
+      "title": "Economic operator identifier",
+      "description": "The responsible manufacturer or operator needs a persistent identifier.",
+      "severity": "critical",
+      "weight": 7,
+      "owner": "internal-product-team",
+      "remediation": "Add product.manufacturer.operatorId from the governed operator master.",
+      "basis": ["ESPR Article 10(1)(f)"]
+    },
+    {
+      "id": "FAC-001",
+      "kind": "required",
+      "path": "product.facility.facilityId",
+      "title": "Facility identifier",
+      "description": "The production facility must be distinguishable from the legal operator.",
+      "severity": "major",
+      "weight": 6,
+      "owner": "internal-product-team",
+      "remediation": "Add a stable facility identifier and reconcile it with supplier records.",
+      "basis": ["ESPR Article 10(1)(g)"]
+    },
+    {
+      "id": "PROD-003",
+      "kind": "required",
+      "path": "product.countryOfProduction",
+      "title": "Country of production",
+      "description": "Country provenance supports routing and evidence review.",
+      "severity": "major",
+      "weight": 4,
+      "owner": "internal-product-team",
+      "remediation": "Use an ISO 3166-1 alpha-2 country code.",
+      "basis": ["ESPR Annex III information concepts"]
+    },
+    {
+      "id": "FMT-001",
+      "kind": "enum",
+      "path": "product.dataFormat",
+      "allowed": ["json-ld"],
+      "title": "Machine-readable data format",
+      "description": "The readiness draft is emitted as JSON-LD.",
+      "severity": "major",
+      "weight": 4,
+      "owner": "internal-product-team",
+      "remediation": "Set product.dataFormat to json-ld and plan the product-specific vocabulary mapping.",
+      "basis": ["ESPR Article 10(1)(e)"]
+    },
+    {
+      "id": "URI-001",
+      "kind": "https",
+      "path": "product.passportUrl",
+      "title": "Persistent passport URL",
+      "description": "A secure persistent URL is required before a carrier can be tested.",
+      "severity": "critical",
+      "weight": 7,
+      "owner": "internal-product-team",
+      "remediation": "Provide an HTTPS URL under a domain with a documented persistence owner.",
+      "basis": ["ESPR Article 10(1)(c) and 10(1)(d)"]
+    },
+    {
+      "id": "CARRIER-001",
+      "kind": "data_carrier",
+      "allowedTypes": ["qr", "datamatrix"],
+      "title": "Data carrier binding",
+      "description": "The carrier type and URI must resolve consistently with the identifier.",
+      "severity": "critical",
+      "weight": 8,
+      "remediation": "Use QR or Data Matrix and bind its HTTPS URI to the same identifier.",
+      "basis": ["ESPR Article 10(1)(a) to 10(1)(d)", "GS1 Digital Link"]
+    },
+    {
+      "id": "ACCESS-001",
+      "kind": "access_model",
+      "requiredRoles": ["consumer", "authority", "repairer"],
+      "title": "Access-right groups",
+      "description": "Public and restricted data groups need explicit stakeholder roles.",
+      "severity": "critical",
+      "weight": 8,
+      "remediation": "Declare public and restricted groups plus consumer, authority, and repairer roles.",
+      "basis": ["ESPR Article 10(1)(h) and 10(1)(i)"]
+    },
+    {
+      "id": "PRIV-001",
+      "kind": "privacy",
+      "title": "Customer personal-data boundary",
+      "description": "The source record must not silently collect customer personal data.",
+      "severity": "critical",
+      "weight": 7,
+      "remediation": "Set the flag to false or establish a separately reviewed consent and privacy design.",
+      "basis": ["ESPR Article 10(2)(f)"]
+    },
+    {
+      "id": "BOM-001",
+      "kind": "bom_presence",
+      "title": "Bill of materials",
+      "description": "At least one source component is needed for evidence mapping.",
+      "severity": "critical",
+      "weight": 7,
+      "remediation": "Export the governed product BOM into bom.csv.",
+      "basis": ["Circularity and material-information readiness"]
+    },
+    {
+      "id": "BOM-002",
+      "kind": "component_fields",
+      "fields": ["name", "unit", "material_code", "material_name", "country_of_origin"],
+      "title": "Component traceability fields",
+      "description": "Every component needs minimum identity, material, unit, and origin fields.",
+      "severity": "major",
+      "weight": 7,
+      "remediation": "Complete the missing BOM fields with the owning supplier or product team.",
+      "basis": ["Evidence lineage prerequisite"]
+    },
+    {
+      "id": "SUP-001",
+      "kind": "supplier_links",
+      "title": "Supplier ownership links",
+      "description": "Every BOM line must resolve to a known source owner.",
+      "severity": "major",
+      "weight": 6,
+      "remediation": "Add the supplier to suppliers.csv or correct the BOM supplier_id.",
+      "basis": ["Evidence lineage prerequisite"]
+    },
+    {
+      "id": "EVD-001",
+      "kind": "evidence_links",
+      "title": "Component evidence links",
+      "description": "Every component must reference at least one declared evidence record.",
+      "severity": "major",
+      "weight": 7,
+      "remediation": "Add evidence IDs to the BOM and matching rows to evidence.csv.",
+      "basis": ["Auditable source lineage"]
+    },
+    {
+      "id": "EVD-002",
+      "kind": "evidence_files",
+      "title": "Readable evidence files",
+      "description": "A spreadsheet reference is not evidence when the underlying file is unavailable.",
+      "severity": "critical",
+      "weight": 8,
+      "remediation": "Place the declared file inside the dataset and correct its relative path.",
+      "basis": ["Auditable source lineage"]
+    },
+    {
+      "id": "EVD-003",
+      "kind": "evidence_hashes",
+      "title": "Declared evidence hashes",
+      "description": "When a supplier declares a digest, the local bytes must match it.",
+      "severity": "critical",
+      "weight": 8,
+      "remediation": "Investigate the byte difference, then update only from the authoritative evidence file.",
+      "basis": ["Internal consistency control"]
+    },
+    {
+      "id": "EVD-004",
+      "kind": "evidence_freshness",
+      "title": "Evidence dates",
+      "description": "Expired, future-dated, and malformed evidence dates require review.",
+      "severity": "major",
+      "weight": 6,
+      "remediation": "Request current evidence or correct the issued and validity dates at source.",
+      "basis": ["Evidence fitness control"]
+    },
+    {
+      "id": "MASS-001",
+      "kind": "mass_balance",
+      "tolerancePct": 2,
+      "title": "BOM mass reconciliation",
+      "description": "Mapped component mass should reconcile with product net mass.",
+      "severity": "major",
+      "weight": 6,
+      "remediation": "Resolve excluded components, packaging scope, units, or stale mass values.",
+      "basis": ["Source-data reconciliation control"]
+    },
+    {
+      "id": "REPAIR-001",
+      "kind": "repair_links",
+      "paths": ["product.repair.instructionsUrl", "product.repair.sparePartsUrl"],
+      "title": "Repair and spare-part links",
+      "description": "Persistent service information is useful before product-specific rules arrive.",
+      "severity": "advisory",
+      "weight": 3,
+      "remediation": "Publish stable HTTPS repair instructions and spare-part information.",
+      "basis": ["ESPR durability and reparability objectives"]
+    }
+  ]
+}

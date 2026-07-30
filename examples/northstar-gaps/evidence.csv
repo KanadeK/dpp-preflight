@@ -1,0 +1,3 @@
+evidence_id,type,path,issuer,issued_on,valid_until,supplier_id,scope,declared_sha256
+EVD-ALU-OLD,recycled-content-declaration,evidence/aluminium-expired.txt,Alba Circular Metals,2024-01-15,2025-01-15,SUP-ALU,CMP-001,
+EVD-MISSING,material-declaration,evidence/not-received.pdf,Unknown supplier,2026-02-10,2027-02-10,SUP-UNKNOWN,CMP-002,
