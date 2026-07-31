@@ -25,7 +25,7 @@ Start with the command that failed. Keep the original input directory and genera
 | Evidence hash mismatch | Hash the authoritative file independently with `sha256sum` or `Get-FileHash`. | Investigate which bytes are authoritative, then update the file or declared digest at source. |
 | `Output directory already exists` | Confirm the exact path in the error. | Choose a new output path, or use `--force` only for that reviewed target. |
 | Exit `4` or `Bundle verification failed` | `node src/cli.js verify path/to/bundle.zip --json` | Recreate the bundle from unchanged authoritative inputs. Never patch files inside the ZIP. |
-| Coverage below threshold | Read the uncovered file/line table printed by Node. | Add behavior-level tests for the missing branch; do not lower thresholds as the first response. |
+| Coverage below threshold | Read the uncovered file/line table printed by Node. | Add behavior-level tests for the missing branch; do not lower thresholds as the first response. The cross-version gate enforces lines 85%, branches 75%, and functions 85%. |
 | Benchmark above 10 seconds | `npm run benchmark` twice on an idle machine. | Check CSV growth, accidental quadratic loops, security software interference, or a constrained runner. |
 | `npm_execpath is unavailable` | Check whether the script was run directly. | Use `npm run package:release` or `npm run release:check`, not `node scripts/package-release.mjs`. |
 | Pages workflow fails | Run `npm run demo && npm run demo:complete && npm run site`. | Repair missing generated reports or broken static assets, then rerun the Pages job. |

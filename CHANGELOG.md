@@ -12,3 +12,4 @@ All notable changes are documented here.
 - Added deterministic ZIP packaging and offline tamper verification.
 - Added complete and intentional-gap fictional fixtures.
 - Added coverage, benchmark, CI, Pages, package, and Release gates.
+- Added a Node 20/24-compatible coverage threshold gate and current official GitHub Actions majors.

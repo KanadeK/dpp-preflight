@@ -22,7 +22,7 @@
   "scripts": {
     "lint": "node scripts/quality-gate.mjs",
     "test": "node --test",
-    "test:coverage": "node --test --experimental-test-coverage --test-coverage-lines=85 --test-coverage-functions=85 --test-coverage-branches=75 --test-coverage-exclude=src/cli.js",
+    "test:coverage": "node scripts/coverage-gate.mjs",
     "demo": "node src/cli.js analyze --input-dir examples/northstar-gaps --out dist/demo --as-of 2026-07-30T00:00:00.000Z --allow-gaps --force",
     "demo:complete": "node src/cli.js analyze --input-dir examples/northstar-complete --out dist/complete --as-of 2026-07-30T00:00:00.000Z --force",
     "verify:demo": "node src/cli.js verify dist/demo/dpp-preflight-bundle.zip",
